@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js">
+	
+</script>
+<script th:src="@{/main.js}"></script>
+<link th:href="@{/main.css}" rel="stylesheet" />
+</head>
+<body ng-app="StudentManagerment" ng-controller="StudentController">
+	<h3>Hello</h3>
+	<form ng-submit="submitStudent()">
+		<table border="0">
+			<tr>
+				<td>Id</td>
+				<td>{{studentForm.idstudent}}</td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" ng-model="studentForm.fullname" /></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="text" ng-model="studentForm.email" /></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td><input type="text" ng-model="studentForm.phone" /></td>
+			</tr>
+			<tr>
+				<td>Class</td>
+				<td><input type="text" ng-model="studentForm.classs" /></td>
+			</tr>
+			<tr>
+				<td>Note</td>
+				<td><input type="text" ng-model="studentForm.note" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Submit"
+					class="blue-button" /></td>
+			</tr>
+		</table>
+	</form>
+	<br />
+	<a class="create-button" ng-click="createStudent()">Create
+		Employee</a>
+	<table border="1">
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Class</th>
+			<th>Note</th>
+		</tr>
+		<!-- $scope.employees -->
+		<tr ng-repeat="student in students">
+			<td>{{ student.idstudent }}</td>
+			<td>{{ student.fullname }}</td>
+			<td>{{ student.email }}</td>
+			<td>{{ student.phone }}</td>
+			<td>{{ student.classs }}</td>
+			<td>{{ student.note }}</td>
+			<td><a ng-click="editStudent(student)" class="edit-button">Edit</a>
+			</td>
+			<td><a ng-click="deleteStudent(student)" class="delete-button">Delete</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
